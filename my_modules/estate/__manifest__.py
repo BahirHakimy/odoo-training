@@ -22,6 +22,8 @@
         "views/estate_property_views.xml",
         "views/estate_property_type_views.xml",
         "views/estate_property_tag_views.xml",
+        "views/estate_property_offer_view.xml",
+        "views/user_properties_view.xml",
     ],
     # only loaded in demonstration mode
     "license": "LGPL-3",

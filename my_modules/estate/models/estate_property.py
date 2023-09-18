@@ -37,7 +37,7 @@ class EstateProperty(models.Model):
         [("north", "North"), ("south", "South"), ("east", "East"), ("west", "West")]
     )
     total_area = fields.Integer(compute="_compute_total_area")
-    active = fields.Boolean(default=False)
+    active = fields.Boolean(default=True)
     state = fields.Selection(
         [
             ("new", "New"),
@@ -113,3 +113,16 @@ class EstateProperty(models.Model):
                 raise ValidationError(
                     "The selling_price must be at least 90% of expected price"
                 )
+
+    @api.ondelete(at_uninstall=False)
+    def _unlink_if_new_or_canceled(self):
+        for record in self:
+            if not record.state in ["new", "canceled"]:
+                raise ValidationError("Only new and canceled properties can be deleted")
+
+        # def unlink(self):
+        #     for record in self:
+        #         if not record.state in ("new", "canceled"):
+        #             raise ValidationError("Only new and canceled properties can be deleted")
+
+        # return super(EstateProperty, self).unlink()

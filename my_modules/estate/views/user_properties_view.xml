@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_users_view_form" model="ir.ui.view">
+        <field name="name">res.users.view.inherit</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref='base.view_users_form' />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="%(estate.estate_user_property_action)d" type="action" class="oe_stat_button" icon="fa-home">
+                    <field string="Properties" name="property_ids" widget="statinfo"/>
+                </button>
+            </xpath>
+
+            <xpath expr="//page[@name='preferences']" position="after">
+                <page name="user_properties" string="Properties">
+                    <field name="property_ids">
+                        <tree string="properties_tree_view" create='false'>
+                            <field name="name" string='Title' />
+                            <field name="property_type_id"/>
+                            <field name="postcode" />
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field':'color'}" />
+                            <field name="bedrooms" />
+                            <field name="living_area" string='Living Area (sqm)' />
+                            <field name="expected_price" />
+                            <field name="selling_price" />
+                            <field name="date_availbility" string="Available From" optional="hide"/>
+                            <field name="state" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
