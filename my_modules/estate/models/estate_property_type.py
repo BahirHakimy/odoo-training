@@ -17,17 +17,16 @@ class EstatePropertyType(models.Model):
 
     _order = "sequence, name"
 
-    def type_offers_action(self):
-        pass
-
-    #     for rec in self:
-    #         return {
-    #             "name": "Type Offers",
-    #             "type": "ir.actions.act_window",
-    #             "res_model": "estate.property.offer",
-    #             "view_mode": "tree,form",
-    #             "domain": [("property_type_id", "=", rec.id)],
-    #         }
+    def open_offers(self):
+        
+        for rec in self:
+            return {
+                "name": "Type Offers",
+                "type": "ir.actions.act_window",
+                "res_model": "estate.property.offer",
+                "view_mode": "tree,form",
+                "domain": [("property_type_id", "=", rec.id)],
+            }
 
     @api.depends("offer_ids")
     def _compute_offers_count(self):

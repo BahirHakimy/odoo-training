@@ -117,12 +117,12 @@
     <field name="context">{'search_default_available':True}</field>
   </record>
 
-  <record id='estate_user_property_action' model='ir.actions.act_window'>
+  <!-- <record id='estate_user_property_action' model='ir.actions.act_window'>
     <field name="name">Properties</field>
     <field name="res_model">estate.property</field>
     <field name="view_mode">tree,form</field>
-    <field name="domain">[('seller_id','=',active_id)]</field>
-  </record>
+    <field name="domain">[('seller_id','=', active_ids)]</field>
+  </record> -->
 
   <menuitem id='estate' name='Estate'>
     <menuitem id='advertisement' name='Advertisement'>
