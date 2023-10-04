@@ -24,12 +24,16 @@
         <field name="arch" type="xml">
             <form string="Test">
                 <sheet>
-                  <div class="oe_button_box" name="button_box">
-                    <button name="open_offers" type="object" class="oe_stat_button" icon="fa-money" string="Offers">
-                        <field name="offers_count" string="Offers" widget="statinfo" />
-                    </button>
-                  </div>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="open_offers" type="object" class="oe_stat_button" icon="fa-money" string="Offers">
+                            <field name="offers_count" string="Offers" widget="statinfo" />
+                        </button>
+                    </div>
                     <field class="display-5 p-4" name="name"/>
+                    <group >
+
+                        <field name="code"/>
+                    </group>
                     <notebook>
                         <page name="properties" string="Properties">
                             <field name="property_ids">

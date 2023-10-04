@@ -40,10 +40,23 @@ class EstatePropertyOffer(models.Model):
                 record.validity = (record.date_deadline - record.create_date).days
 
     def action_accept(self):
-        for record in self:
-            record.status = "accepted"
-            record.property_id.selling_price = record.price
-            record.property_id.buyer_id = record.partner_id.id
+        for rec in self:
+            return {
+                "type": "ir.actions.act_window",
+                "view_mode": "form",
+                "res_model": "accept.reason",
+                "name": "Accept Reason",
+                "target": "new",
+                "context": {
+                    "default_offer_id": rec.id,
+                    "default_property_id": rec.property_id.id,
+                },
+            }
+        # for record in self:
+        #     record.status = "accepted"
+        #     record.property_id.state = "offer_accepted"
+        #     record.property_id.selling_price = record.price
+        #     record.property_id.buyer_id = record.partner_id.id
 
     def action_refuse(self):
         for record in self:

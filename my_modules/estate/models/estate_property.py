@@ -22,11 +22,15 @@ class EstateProperty(models.Model):
         "res.users", string="Salesman", default=lambda self: self.env.user.id
     )
     buyer_id = fields.Many2one("res.partner")
+    currency_id = fields.Many2one(
+        "res.currency", default=lambda self: self.env.company.currency_id
+    )
     tag_ids = fields.Many2many("estate.property.tag", string="Tags")
     offer_ids = fields.One2many("estate.property.offer", "property_id")
-    expected_price = fields.Float(required=True)
-    selling_price = fields.Float(readonly=True, copy=False)
-    best_price = fields.Float(compute="_compute_best_price")
+    offer_accept_reason = fields.Text()
+    expected_price = fields.Monetary(required=True)
+    selling_price = fields.Monetary(readonly=True, copy=False)
+    best_price = fields.Monetary(compute="_compute_best_price")
     bedrooms = fields.Integer(default=2)
     living_area = fields.Integer()
     facades = fields.Integer()

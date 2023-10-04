@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_autorent_autorent,autorent.autorent,model_autorent_autorent,base.group_user,1,1,1,1
+access_autorent_car,autorent.car,model_autorent_car,base.group_user,1,1,1,1
+access_autorent_car_type,autorent.car.type,model_autorent_car_type,base.group_user,1,1,1,1
+access_autorent_search_car,autorent.search.car,model_autorent_search_car,base.group_user,1,1,1,1
+access_autorent_booking,autorent.booking,model_autorent_booking,base.group_user,1,1,1,1

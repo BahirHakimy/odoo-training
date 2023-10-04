@@ -6,6 +6,7 @@ class EstatePropertyType(models.Model):
     _description = "Property types"
 
     name = fields.Char(required=True)
+    code = fields.Integer()
     property_ids = fields.One2many("estate.property", "id")
     sequence = fields.Integer("Sequence", default=1)
     offer_ids = fields.One2many("estate.property.offer", "property_type_id")
@@ -18,7 +19,6 @@ class EstatePropertyType(models.Model):
     _order = "sequence, name"
 
     def open_offers(self):
-        
         for rec in self:
             return {
                 "name": "Type Offers",
@@ -32,3 +32,9 @@ class EstatePropertyType(models.Model):
     def _compute_offers_count(self):
         for rec in self:
             rec.offers_count = len(rec.offer_ids)
+
+    def name_get(self) -> list[tuple[int, str]]:
+        result = []
+        for rec in self:
+            result.append((rec.id, f"{rec.name}-{rec.code}"))
+        return result

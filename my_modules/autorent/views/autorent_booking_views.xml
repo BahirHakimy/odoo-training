@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="autorent_booking_view_form" model="ir.ui.view">
+        <field name="name">autorent.booking.view.form</field>
+        <field name="model">autorent.booking</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <header>
+                    <field name="state" widget='statusbar'/>
+
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="open_user" type="object" class="oe_stat_button" icon="fa-user">
+                            <field name="partner_id" string="" widget="statinfo"/>
+                        </button>
+                        <button name="open_car" type="object" class="oe_stat_button" icon="fa-car">
+                            <field name="car_id" string="" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <h1>
+                        <field name="booking_number" />
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="partner_id" />
+                            <field name="car_id" />
+                        </group>
+                        <group>
+                            <field name="payment_amount" />
+                            <field name="currency_id" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="additional_info" string="Additional Info">
+                            <group >
+
+                                <field name="pick_up_location" />
+                                <field name="drop_off_location" />
+                                <field name="pick_up_date" />
+                                <field name="drop_off_date" />
+                                <field name="payment_type" />
+                                <field name="total_cost" />
+
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="autorent_booking_view_tree" model="ir.ui.view">
+        <field name="name">autorent.booking.view.tree</field>
+        <field name="model">autorent.booking</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="booking_number" />
+                <field name="partner_id" />
+                <field name="car_id" />
+                <field name="pick_up_location" />
+                <field name="drop_off_location" />
+                <field name="pick_up_date" />
+                <field name="drop_off_date" />
+                <field name="payment_type" />
+                <field name="total_cost" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="autorent_booking_action" model="ir.actions.act_window">
+        <field name="name">AutoRent Bookings</field>
+        <field name="res_model">autorent.booking</field>
+        <field name="view_mode">tree,form</field>
+
+    </record>
+
+
+    <menuitem id="autorent_booking_menu" name="Bookings" action="autorent_booking_action" parent="autorent" sequence="2"/>
+
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="1">
+
+        <record id="module_estate_category" model="ir.module.category">
+            <field name="name">Estate</field>
+            <field name="sequence">60</field>
+        </record>
+
+        <record id="group_estate_user" model="model_name">
+
+            <field name="name">User</field>
+            <field name="category_id" ref="module_estate_category" />
+            
+        </record>
+
+    </data>
+
+
+</odoo>

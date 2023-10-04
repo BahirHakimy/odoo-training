@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="estate_property_view_form_inherit" model="ir.ui.view">
+        <field name="name">estate.property.view.form.inherit</field>
+        <field name="model">estate.property</field>
+        <field name="inherit_id" ref="estate.estate_property_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="open_invoice" type="object" class="oe_stat_button" icon="fa-book" attrs="{'invisible':[('invoice_id','=',False)]}">
+                    <field name="invoice_id" string="Invoice" widget="statinfo"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="account_view_move_form_inherit" model="ir.ui.view">
+        <field name="name">account.move.view.form.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="open_property" type="object" attrs="{'invisible': [('property_id', '=', False)]}" class="oe_stat_button" icon="fa-home">
+                    <field name="property_id" string='Property' widget='statinfo'  />
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
+
+
