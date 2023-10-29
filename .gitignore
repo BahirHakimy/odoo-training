@@ -2,3 +2,5 @@ venv/
 odoo/
 myaddons/
 .vscode/
+
+/**/__pycache__
